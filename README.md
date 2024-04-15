@@ -3,7 +3,7 @@
 
 ## *Componenti gruppo*
 - Carlo MIGLIACCIO
-- Federico PETRINI
+- Federico PRETINI
 - Lorenzo AGHILAR
 
 ## First part Tasks
