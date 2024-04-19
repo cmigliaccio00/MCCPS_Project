@@ -60,6 +60,48 @@ Supp_x = find(x_calc)'
 Supp_a = find(a_calc)'
 
 
+%% k-nn
+
+
+min = 10000;
+
+
+count = 0;
+
+
+for d1=1:p
+    for d2=1:p
+        for d3=1:p
+            
+            if d2>d1 && d3>d2
+
+                diff = norm(D(:,d1)+D(:, d2)+D(:,d3)-y)^2;
+    
+                if diff < min
+                    x1 = d1;
+                    x2 = d2;
+                    x3 = d3;
+                    min = diff;
+                end
+                count = count +1;
+
+            end
+        end
+    end
+end
+
+count
+
+supp_x_knn(1) = x1;
+supp_x_knn(2) = x2;
+supp_x_knn(3) = x3;
+
+supp_x_knn
+
+norm(D(:,23)+D(:,36)+D(:,87)-y)
+norm(D(:,23)+D(:,46)+D(:,87)-y)
+
+
    
 
 
