@@ -71,4 +71,20 @@ end
 Supp_a=find(A(:,1))'
 
 
+%To do...
+%   -> Rappresentazione della 'stanza' (file prof)
+%   -> Cambiare Q (rappresentare tramite grafo)
+%   -> Analizzare il comportamento in  base a esr(Q)
+%   -> Condizione di terminazione sul singolo sensore  
+%       --> Stop Gradiente
+%       --> Info distribuita pari a quella dell'ultimo passo
+%   -> Notare differenze rispetto al caso centralizzato: non ho G!
+%           --> Ogni sensore ne conserva una parte
+%           --> tau non posso calcolarla a priori
+%           --> i lambda vanno ricalibrati
+%           --> non posso fare normalize(G)
+%   -> Numero di iterazioni!
+
+
+
 
