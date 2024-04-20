@@ -4,7 +4,6 @@
 %                               
 %                                Carlo Migliaccio
 %                                12.04.2024
-%prova push
 %-----------------------------------------------------
 clear all
 close all
@@ -26,6 +25,9 @@ tau = (norm(G)^(-2))-eps;
 
 %------------------------SPARSE OBSERVER------------------------
 Tmax=50;
+
+%z_hat = [xtrue; zeros(q,1)];       %stato iniziale 
+
 z_hat = [zeros(p,1); zeros(q,1)];       %stato iniziale 
 
 mes_x = zeros(p,1); 
@@ -67,6 +69,8 @@ for j=0:(Tmax)
         end
     end
 end
+
+room(mes_x,mes_a,1,Tmax);
 
 
 

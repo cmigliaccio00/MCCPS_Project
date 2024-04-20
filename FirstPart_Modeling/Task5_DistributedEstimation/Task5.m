@@ -17,7 +17,6 @@ lambda_1=10;    lambda_2=0.1;
 lambda = [lambda_1*ones(n,1); lambda_2*ones(q,1)]; 
 G=[D eye(q)];
 
-%Per ogni istante di tempo da 1 a Tmax
 while 1
     Z_prev=Z_next; 
     %per ogni sensore da 1 a q
