@@ -2,7 +2,8 @@
 %% Dynamic CPS: 3 targets moving in a room
 %% The dyanmics is given by matrix A
 function room(x_estimated,a_estimated,Tstart,Tmax)
-    load("localization.mat");
+    load("tracking_moving_targets.mat");
+  
     n=size(x_estimated);
     n=n(1);
     q=size(a_estimated);
@@ -12,6 +13,26 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
     W = 100; %width of a square cell (cm)
 
     room_grid = zeros(2,n);
+    count=0;
+    %sensor localization
+    sensors_position=zeros(q,2);%vector with the position of sensors and the number of sensors in the same cell
+    sensors=zeros(q,1); %vector with the position of sensors (repeated)
+    for i=1:q
+      [~,cell]=maxk(D(i,:),1);
+      sensors(i)=cell;
+      if ismember(cell,sensors_position(:,1))
+        pos=find(sensors_position(:,1)==cell);
+        sensors_position(pos,2)=sensors_position(pos,2)+1;
+      else
+        count=count+1;
+        sensors_position(i,1)=cell;
+        sensors_position(i,2)=1;           
+      end  
+    end
+    sensors_position(sensors_position==0)=[];
+    sensors_position = reshape(sensors_position,count,2);
+        
+  
 
     for i=1:n
 	    room_grid(1,i) = floor(W/2)+ mod(i-1,L)*W; 
@@ -34,17 +55,28 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
         x_true=A*x_true;
         target_real = find(x_true);
         target_estimated = find(x_estimated(:,move));
-        
-        sensors_under_attack = find(a_true);
-        estimated_attack = find(a_estimated(:,move));
 
-        plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',9, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220])
+        sensors_under_attack = sensors(support_a);
+        estimated_attack = sensors(find(a_estimated(:,move)));
+        
+        plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',9, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220]);
         hold on
-        plot(room_grid(1,target_estimated), room_grid(2,target_estimated),'*','MarkerSize',9, 'MarkerEdgeColor',1/255*[28 55 189])
-        plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0])
-        plot(room_grid(1,estimated_attack), room_grid(2,estimated_attack),'*','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0])
+        plot(room_grid(1,target_estimated), room_grid(2,target_estimated),'*','MarkerSize',9, 'MarkerEdgeColor',1/255*[28 55 189]);
+        for i=1:count
+            switch sensors_position(i,2)
+                case 1 
+                    plot(room_grid(1,sensors_position(i,1)), room_grid(2,sensors_position(i,1)),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
+                case 2
+                    plot(room_grid(1,sensors_position(i,1))-25, room_grid(2,sensors_position(i,1)),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
+                    plot(room_grid(1,sensors_position(i,1))+25, room_grid(2,sensors_position(i,1)),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240])            
+        
+            end
+        end
+        plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0]);
+        plot(room_grid(1,estimated_attack), room_grid(2,estimated_attack),'*','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0]);
         grid on
-        legend('Targets','Estimated targets','Sensors under attack','Estimated attacks','Location','eastoutside')
+        
+        %legend(plot([1,2,3,4,5]),{'Targets','Estimated targets','Sensors','Sensors under attack','Estimated attacks','Location','eastoutside'})
 
         xticks(100:100:1000)
         yticks(100:100:1000)
