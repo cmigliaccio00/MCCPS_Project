@@ -16,6 +16,7 @@ load localization.mat
 %   hyperparameters
 p=100;                                   %number of cells of the grid
 q=25;                                    %number of sensors
+count=0;
 
 delta=1e-15;                             %used in the stop condition                           
                              
@@ -44,6 +45,7 @@ while 1
     if(norm(z_calc-z_prev)<delta)
         break
     end
+    count=count+1;
 end 
 
 tol=4;
@@ -56,17 +58,15 @@ end
 %Separate x and a
 x_calc = z_calc(1:p);
 a_calc = z_calc(p+1:end);
-Supp_x = find(x_calc)'
-Supp_a = find(a_calc)'
+Supp_x = find(x_calc)';
+Supp_a = find(a_calc)';
 
+room(Supp_x,Supp_a,"ISTA")
 
 %% k-nn
 
 
 min = 10000;
-
-
-count = 0;
 
 
 for d1=1:p
@@ -83,24 +83,17 @@ for d1=1:p
                     x3 = d3;
                     min = diff;
                 end
-                count = count +1;
-
+                count=count+1;
             end
         end
     end
 end
-
-count
-
 supp_x_knn(1) = x1;
 supp_x_knn(2) = x2;
 supp_x_knn(3) = x3;
 
-supp_x_knn
 
-norm(D(:,23)+D(:,36)+D(:,87)-y)
-norm(D(:,23)+D(:,46)+D(:,87)-y)
-
+room(supp_x_knn,0,"K-NN",count)
 
    
 

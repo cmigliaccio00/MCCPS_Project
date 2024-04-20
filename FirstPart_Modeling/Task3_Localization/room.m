@@ -1,8 +1,8 @@
 %% April 11, 2024 - S. M. Fosson
 %% Dynamic CPS: 3 targets moving in a room
 %% The dyanmics is given by matrix A
-function room(x_supp,a_supp,k,name)
-    load distributed_localization_data.mat;
+function room(x_supp,a_supp,name,count)
+    load localization.mat;
   
     n=size(D,2);
     q=size(y,1);
@@ -55,20 +55,24 @@ function room(x_supp,a_supp,k,name)
         end
     end
    
-   %These values are given from the text of task5 as solutions 
+   %These values are given from the text of task3 as solutions 
    figure('Name',name)
-   sensors_under_attack=sensors([8,23]);
-   target_real=[14,25];
+   sensors_under_attack=sensors([12,16]);
+   target_real=[23,36,87];
 
-   estimated_attack=zeros(size(a_supp,2),2);
-   for i = 1:size(a_supp,2)
+   if a_supp~=0
+    estimated_attack=zeros(size(a_supp,2),2);
+    for i = 1:size(a_supp,2)
         estimated_attack(i,:) = sensors(a_supp(i),2:end);
-   end
-     
+    end
+   end    
+   
    plot(sensors(:,2), sensors(:,3),'o','MarkerSize',10, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
    hold on
    plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',11, 'MarkerEdgeColor',1/255*[255 0 0]);
-   plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
+   if a_supp~=0
+    plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
+   end
    text(sensors(:,2)-20,sensors(:,3)-30,numbers,'FontSize',8,'FontWeight','bold');
    plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',10, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220]);
    plot(room_grid(1,x_supp), room_grid(2,x_supp),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[28 55 189]);
@@ -80,7 +84,7 @@ function room(x_supp,a_supp,k,name)
    ylabel('(cm)')
    axis([0 1000 0 1000])
    axis square
-   str = sprintf(' Iteration = %d', k);
-   text(1100,900,str);       
+   str = sprintf(' Iteration = %d', count);
+   text(1100,900,str); 
    hold off
 end
