@@ -19,8 +19,9 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
     end
     count=0;
     %% sensors localization
-    %sensors_position=zeros(q,2);%vector with the position of sensors and the number of sensors in the same cell
     sensors=zeros(q,3); %vector with the position of sensors (repeated)
+    numbers=1:q;
+    numbers = num2str(numbers');
     for i=1:q
       [~,cell]=maxk(D(i,:),1);
       sensors(i,1)=cell;
@@ -73,8 +74,10 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
         plot(sensors(:,2), sensors(:,3),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
         plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0]);
         plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',9, 'MarkerEdgeColor',1/255*[255 0 0]);
+        
+        text(sensors(:,2)-25,sensors(:,3)-50,numbers);
         grid on,        
-        %legend(plot([1,2,3,4,5]),{'Targets','Estimated targets','Sensors','Sensors under attack','Estimated attacks','Location','eastoutside'})
+        legend('Targets','Estimated targets','Sensors','Sensors under attack','Estimated attacks','Location','eastoutside')
 
         xticks(100:100:1000)
         yticks(100:100:1000)
