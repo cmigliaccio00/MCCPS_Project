@@ -52,23 +52,26 @@ for k=0:(Tmax-1)
 end
 
 %data cleaning
-for j=0:(Tmax)
+for j=1:(Tmax)
     %cleaning x_hat
-    max_x_vec = maxk(mes_x(:,j+1),Ntarget);
-    for i=1:p
-        if(abs(mes_x(i,j+1))<max_x_vec(Ntarget))
-            mes_x(i,j+1)=0; 
+    
+    max_x_vec = maxk(mes_x(:,j),Ntarget);
+
+    for i=1:p 
+        if(abs(mes_x(i,j))<max_x_vec(end))
+            mes_x(i,j)=0; 
         end
     end
 
     %cleaning a_hat
-    max_a_vec = maxk(mes_a(:,j+1),Nattack);
+    max_a_vec = maxk(mes_a(:,j),Nattack);
     for i=1:q
-        if(abs(mes_a(i,j+1))<max_a_vec(Nattack))
-            mes_a(i,j+1)=0; 
+        if(abs(mes_a(i,j))<max_a_vec(end))
+            mes_a(i,j)=0; 
         end
     end
 end
+
 room(mes_x,mes_a,1,Tmax);
 
 

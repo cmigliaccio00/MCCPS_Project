@@ -4,10 +4,8 @@
 function room(x_estimated,a_estimated,Tstart,Tmax)
     load tracking_moving_targets.mat;
   
-    n=size(x_estimated);
-    n=n(1);
-    q=size(a_estimated);
-    q=q(1);
+    n=size(x_estimated,1);
+    q=size(a_estimated,1);
     H = 10; %height of the grid (# cells)
     L = 10; %length of the grid (# cells)
     W = 100; %width of a square cell (cm)
@@ -85,12 +83,12 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
         hold on
         plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',11, 'MarkerEdgeColor',1/255*[255 0 0]);
         plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
-        text(sensors(:,2)-20,sensors(:,3)-40,numbers,'FontSize',8,'FontWeight','bold');
+        text(sensors(:,2)-20,sensors(:,3)-30,numbers,'FontSize',8,'FontWeight','bold');
         plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',10, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220]);
         plot(room_grid(1,target_estimated), room_grid(2,target_estimated),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[28 55 189]);
         
         grid on,        
-        legend('Targets','Estimated targets','Sensors','Sensors under attack','Estimated attacks','Location','eastoutside')
+        legend('Sensors','Sensors under attack','Estimated attacks','Targets','Estimated targets','Location','eastoutside')
 
         xticks(100:100:1000)
         yticks(100:100:1000)
