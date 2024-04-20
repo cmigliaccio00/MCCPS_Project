@@ -5,7 +5,7 @@
 %                                Carlo Migliaccio
 %                                12.04.2024
 %-----------------------------------------------------
-clear all
+clear
 close all
 clc 
 
@@ -69,7 +69,6 @@ for j=0:(Tmax)
         end
     end
 end
-
 room(mes_x,mes_a,1,Tmax);
 
 
