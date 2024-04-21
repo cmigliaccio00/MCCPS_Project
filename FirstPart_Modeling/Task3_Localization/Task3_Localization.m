@@ -61,7 +61,8 @@ a_calc = z_calc(p+1:end);
 Supp_x = find(x_calc)';
 Supp_a = find(a_calc)';
 
-room(Supp_x,Supp_a,"ISTA")
+room(Supp_x,Supp_a,"ISTA",count)
+count=0;
 
 %% k-nn
 
@@ -71,20 +72,25 @@ min = 10000;
 
 for d1=1:p
     for d2=1:p
+        if d2>=d1
+            break
+        end
         for d3=1:p
-            
-            if d2>d1 && d3>d2
+            if d3>=d2
+                break
+            end            
+            %if d2>d1 && d3>d2
 
-                diff = norm(D(:,d1)+D(:, d2)+D(:,d3)-y)^2;
+            diff = norm(D(:,d1)+D(:, d2)+D(:,d3)-y)^2;
     
-                if diff < min
-                    x1 = d1;
-                    x2 = d2;
-                    x3 = d3;
-                    min = diff;
-                end
-                count=count+1;
+            if diff < min
+                x1 = d1;
+                x2 = d2;
+                x3 = d3;
+                min = diff;
             end
+            count=count+1;    
+            %end
         end
     end
 end

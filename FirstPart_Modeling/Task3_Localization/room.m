@@ -1,7 +1,7 @@
 %% April 11, 2024 - S. M. Fosson
 %% Dynamic CPS: 3 targets moving in a room
 %% The dyanmics is given by matrix A
-function room(x_supp,a_supp,name,count)
+function room(x_supp,a_supp,name,k)
     load localization.mat;
   
     n=size(D,2);
@@ -73,8 +73,8 @@ function room(x_supp,a_supp,name,count)
    
    plot(sensors(:,2), sensors(:,3),'o','MarkerSize',10, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
    hold on
-   plot(sensors_under_attack(:,2),sensors_under_attack(:,3),'o','MarkerSize',15, 'MarkerEdgeColor',1/255*[255 0 0]);
    if a_supp~=0
+    plot(sensors_under_attack(:,2),sensors_under_attack(:,3),'o','MarkerSize',15, 'MarkerEdgeColor',1/255*[255 0 0]);
     plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
    end
    text(sensors(:,2)-20,sensors(:,3)-30,numbers,'FontSize',8,'FontWeight','bold');
@@ -84,7 +84,7 @@ function room(x_supp,a_supp,name,count)
    if name=="ISTA"
        legend('Sensors','Sensors under attack','Estimated attacks','Targets','Estimated targets','Location','eastoutside')
    else
-       legend('Sensors','Sensors under attack','Targets','Estimated targets','Location','eastoutside')
+       legend('Sensors','Targets','Estimated targets','Location','eastoutside')
    end
 
    xticks(100:100:1000)
@@ -93,7 +93,7 @@ function room(x_supp,a_supp,name,count)
    ylabel('(cm)')
    axis([0 1000 0 1000])
    axis square
-   str = sprintf(' Iteration = %d', count);
+   str = sprintf(' Iteration = %d',k);
    text(1100,900,str); 
    hold off
 end
