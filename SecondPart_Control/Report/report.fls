@@ -1,8 +1,8 @@
-PWD c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report
+PWD c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/SecondPart_Control/Report
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex
+INPUT c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/SecondPart_Control/Report/report.tex
 OUTPUT report.log
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
