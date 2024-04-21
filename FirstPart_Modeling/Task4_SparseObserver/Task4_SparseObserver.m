@@ -73,7 +73,8 @@ if aware
     tmp_supp_a = randperm(q);
     tmp_supp_a = tmp_supp_a(1:Nattack); % I consider 2 sensors under attack
     %atrue(support_a_true) = 0; %->da eliminare
-    noise=0;%->TODO: cambaire con un valore di rumore accettabile
+    sigma=1e-2; 
+    noise = sigma*randn(q, 1);
     
     if change_sensors
         rep=Tmax/25;
