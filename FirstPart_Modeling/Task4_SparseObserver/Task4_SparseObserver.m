@@ -2,8 +2,8 @@
 %  Project "Modeling and Control of CPS"
 %           TASK 4 - Sparse observer
 %                               
-%                                Carlo Migliaccio
-%                                12.04.2024
+%                       Latest update: 21.04.2024
+%                                
 %-----------------------------------------------------
 clear
 close all
@@ -50,8 +50,6 @@ eps=1e-8;
 G = [D eye(q)];                 %augmented sensing matrix
 G=normalize(G);
 tau= (norm(G)^(-2))-eps;                    %step size
-
-%------------------------SPARSE OBSERVER------------------------
 
 
 %z_hat = [xtrue; zeros(q,1)];       %stato iniziale 
@@ -101,20 +99,19 @@ if aware
         end
     end
 else
-    %The definition of initial condition on x_true and a_true are given only for graphical
-    %reason. In the reality we don't have the initial condition on the
-    %target and also we have to estimate which are the sensors under
-    %attack
+    %The definition of initial condition on x_true and a_true are given 
+    % only for graphical reason. In the reality we don't have the initial 
+    % condition on the target and also we have to estimate which are the 
+    % sensors under attack
     x_true = zeros(p,1);
     support_x_true = [86,22,35];    
     
     a_true = zeros(q,1);
     support_a_true = [12,16];
     
-
 end
 
-
+%------------------------SPARSE OBSERVER------------------------
 z_hat_plus=zeros(p+q,1);
 for k=1:Tmax
     %to do...
@@ -135,12 +132,10 @@ end
 mes_x = mes_x(:,2:end);
 mes_a = mes_a(:,2:end);
 
-%data cleaning
+%-------------------------Data cleaning--------------------------
 for j=1:Tmax
     %cleaning x_hat
-    
     max_x_vec = maxk(abs(mes_x(:,j)),Ntarget);
-
     for i=1:p 
         if(abs(mes_x(i,j))<max_x_vec(end))
             mes_x(i,j)=0; 
@@ -155,6 +150,7 @@ for j=1:Tmax
         end
     end
 end
+
 room(mes_x,mes_a,1,Tmax,support_x_true,support_a_true,change_sensors);
 
 

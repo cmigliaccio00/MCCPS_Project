@@ -1,34 +1,48 @@
+%------------------------------------------------------
+% Project "Modeling and Control of CPS"
+%       Task 5 - Distributed SSE of CPS under attacks
+%                                                          
+%                           Latest Update: 21.04.2024
+%                                       
+%-------------------------------------------------------
 clear
 close all
 clc
 
 load distributed_localization_data.mat
 
-n=100; 
-q=25;
+n=100;                  %numero di celle della stanza
+q=25;                   %numero di sensori
+G=[D eye(q)];           %matrice di sensing aumentata
+
+%Pool di matrici stocastiche su cui viene testato l'algoritmo
 Q_vec=[Q_4,Q_8,Q_12,Q_18];
 Q_name = ["Q_4","Q_8","Q_{12}","Q_{18}"];
 Q = zeros(q,q);
-for m=1:4
-    Q = Q_vec(:,((m-1)*q)+1:m*q);
-    K=0;
-    delta=1e-8;
-    Z_prev=zeros(n+q,q);    
-    Z_next=zeros(n+q,q);   
-    tau=4e-7; 
-    lambda_1=10;    lambda_2=0.1; 
-    lambda = [lambda_1*ones(n,1); lambda_2*ones(q,1)]; 
-    G=[D eye(q)];
 
+%hyperparameters
+delta=1e-8;
+tau=4e-7; 
+lambda_1=10;    lambda_2=0.1; 
+lambda = [lambda_1*ones(n,1); lambda_2*ones(q,1)]; 
+
+for m=1:4
+    Q = Q_vec(:,((m-1)*q)+1:m*q);        %seleziono Q
+    K=0;                                 %contatore iterazioni
+    Z_prev=zeros(n+q,q);                 
+    Z_next=zeros(n+q,q);   
+    
+    %---------------------------------------------------------------------
     while 1
         Z_prev=Z_next; 
         %per ogni sensore da 1 a q
         for i=1:q
-            %Local mean 
+            %-----Local mean------ 
             A=0;
             for j=1:q
                 A=A+Q(i,j)*Z_prev(:,j);
             end
+            %----------------------
             B=tau * G(i,:)' * ( y(i)-G(i,:)*Z_prev(:,i) );
             arg_sto=A+B;
             %applico l'operatore
@@ -37,7 +51,7 @@ for m=1:4
             end
         end
         K=K+1; 
-        %Controllare la condizione di terminazione
+        %Controllo condizione di terminazione
         Somma=0; 
         for i=1:q
             Somma=Somma+norm(Z_next(:,i)-Z_prev(:,i))^2;
@@ -45,11 +59,10 @@ for m=1:4
     
         if (Somma<delta)
             break
-        end 
-    
+        end
     end                     
-
-    %-----------------PULIZIA DI X-----------------
+    %---------------------------------------------------------------------
+    
     Ntarget=2; 
     x_clean=Z_next(1:n,1);
     [max_x_vec,Supp_x] = maxk(abs(x_clean),Ntarget);
@@ -72,6 +85,8 @@ for m=1:4
     Supp_a=find(A(:,1))';
     room(Supp_x,Supp_a,K,Q_name(m));
 end
+
+%Disegno dei grafi associati alle rispettive Q
 figure()
 subplot(2,2,1)
 plot(digraph(Q_4'))
@@ -89,8 +104,8 @@ sgt = sgtitle('Graphs','Color','red');
 sgt.FontSize = 20;
 
 %To do...
-%   -> Rappresentazione della 'stanza' (file prof)
-%   -> Cambiare Q (rappresentare tramite grafo)
+%   -> Rappresentazione della 'stanza' (file prof)        OK
+%   -> Cambiare Q (rappresentare tramite grafo)           OK
 %   -> Analizzare il comportamento in  base a esr(Q)
 %   -> Condizione di terminazione sul singolo sensore  
 %       --> Stop Gradiente
@@ -100,7 +115,7 @@ sgt.FontSize = 20;
 %           --> tau non posso calcolarla a priori
 %           --> i lambda vanno ricalibrati
 %           --> non posso fare normalize(G)
-%   -> Numero di iterazioni!
+%   -> Numero di iterazioni!                               OK
 
 
 

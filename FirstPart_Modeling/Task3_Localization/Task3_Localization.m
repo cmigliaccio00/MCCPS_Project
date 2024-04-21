@@ -2,8 +2,7 @@
 %  Project "Modeling and Control of CPS"
 %           TASK 3 - Localization under sparse attacks
 %                               
-%                                Carlo Migliaccio
-%                                28.03.2024
+%                         Latest Update: 21.04.2024
 % 
 %-----------------------------------------------------
 clear
@@ -31,7 +30,8 @@ tau= (norm(G)^(-2))-eps;                        %step size
 
 z_calc=zeros((p+q), 1);   %z_0                      
 %----------------------------------------------------------
-%From here start the ISTA----------------------------------
+
+%-------------ISTA for localization------------------------
 while 1
     z_prev=z_calc;
     %.........passo k+1 dell'algoritmo
@@ -41,7 +41,7 @@ while 1
         %nuovo elemento di x  
         z_calc(j,1) = sto(qi(j), lambda(j)*tau);
     end
-    %.................................................
+    %......................................................
     if(norm(z_calc-z_prev)<delta)
         break
     end
@@ -64,11 +64,8 @@ Supp_a = find(a_calc)';
 room(Supp_x,Supp_a,"ISTA",count)
 count=0;
 
-%% k-nn
-
-
+%% Alternative to Localization: k-NN (attack free) 
 min = 10000;
-
 
 for d1=1:p
     for d2=1:p
@@ -97,7 +94,6 @@ end
 supp_x_knn(1) = x1;
 supp_x_knn(2) = x2;
 supp_x_knn(3) = x3;
-
 
 room(supp_x_knn,0,"K-NN",count)
 
