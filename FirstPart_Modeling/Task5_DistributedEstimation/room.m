@@ -18,7 +18,11 @@ function room(x_supp,a_supp,k,name)
 
     count=0;
     %% sensors localization
-    sensors=zeros(q,3); %vector with the position of sensors (repeated)
+    %vector with the position of sensors,where:
+        %- First column is the cell number
+        %- Second column is the x coordinate of the cell
+        %- Third column is the y coordinate of the cell
+    sensors=zeros(q,3); 
     numbers=1:q;
     numbers = num2str(numbers');
     for i=1:q

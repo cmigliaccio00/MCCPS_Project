@@ -1,7 +1,7 @@
 %% April 11, 2024 - S. M. Fosson
 %% Dynamic CPS: 3 targets moving in a room
 %% The dyanmics is given by matrix A
-function room(x_estimated,a_estimated,Tstart,Tmax)
+function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a)
     load tracking_moving_targets.mat;
   
     n=size(x_estimated,1);
@@ -54,17 +54,9 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
         end
     end
     
-    %The definition of initial condition on x_true and a_true are given only for graphical
-    %reason. In the reality we don't have the initial condition on the
-    %target and also we have to estimate which are the sensors under
-    %attack
-    x_true = zeros(n,1);
-    support_x = [87,23,36];
+    x_true=zeros(n,1);
     x_true(support_x) = 1;
-    
-    a_true = zeros(q,1);
-    support_a = [12,16];
-    a_true(support_a) = 1;
+
 
     for move = Tstart:Tmax
         x_true=A*x_true;
@@ -98,7 +90,7 @@ function room(x_estimated,a_estimated,Tstart,Tmax)
         axis square
         str = sprintf(' Time = %d', move);
         text(1100,900,str);
-        pause(1)
+        pause(0.5)
         hold off
     end
 

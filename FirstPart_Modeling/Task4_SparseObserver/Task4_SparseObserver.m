@@ -16,22 +16,57 @@ q=25;           %number of sensors
 Ntarget=3;
 Nattack=2;
 
+aware=1; % 0=unaware attack  1=aware attack
+
 lammba1=10; lambda2=20; 
 lambda=[10*ones(p,1); 20*ones(q,1)];
-G = [D eye(q)];                 %augmented sensing matrix
-G = normalize(G); 
 eps=1e-8; 
-tau = (norm(G)^(-2))-eps; 
+G = [D eye(q)];                 %augmented sensing matrix
+G=normalize(G);
+tau= (norm(G)^(-2))-eps;                    %step size
 
 %------------------------SPARSE OBSERVER------------------------
 Tmax=50;
 
 %z_hat = [xtrue; zeros(q,1)];       %stato iniziale 
 
-z_hat = [zeros(p,1); zeros(q,1)];       %stato iniziale 
-
 mes_x = zeros(p,1); 
 mes_a = zeros(q,1); 
+z_hat = [zeros(p,1); zeros(q,1)];       %Initial state observer
+
+xtrue=zeros(p,1);
+atrue=zeros(q,1);
+if aware
+    
+    %generate inital condition
+    support_x_true = randperm(p);
+    support_x_true = support_x_true(1:Ntarget); % I consider 3 targets
+    xtrue(support_x_true) = 1;
+
+    %generate attack support
+    support_a_true = randperm(q);
+    support_a_true = support_a_true(1:Nattack); % I consider 2 sensors under attack
+    %atrue(support_a_true) = 0; %->da eliminare
+    noise=0;
+    for i=1:Tmax
+        Y(:,i) = D*xtrue + atrue + noise;
+        atrue(support_a_true)=0.5*Y(support_a_true,i);
+        xtrue=A*xtrue;
+    end
+else
+    %The definition of initial condition on x_true and a_true are given only for graphical
+    %reason. In the reality we don't have the initial condition on the
+    %target and also we have to estimate which are the sensors under
+    %attack
+    x_true = zeros(p,1);
+    support_x_true = [87,23,36];    
+    
+    a_true = zeros(q,1);
+    support_a_true = [12,16];
+    
+
+end
+
 
 z_hat_plus=zeros(p+q,1);
 for k=0:(Tmax-1)
@@ -50,12 +85,14 @@ for k=0:(Tmax-1)
     mes_x = [mes_x x_hat];
     mes_a = [mes_a a_hat];
 end
+mes_x = mes_x(:,2:end);
+mes_a = mes_a(:,2:end);
 
 %data cleaning
-for j=1:(Tmax)
+for j=1:Tmax
     %cleaning x_hat
     
-    max_x_vec = maxk(mes_x(:,j),Ntarget);
+    max_x_vec = maxk(abs(mes_x(:,j)),Ntarget);
 
     for i=1:p 
         if(abs(mes_x(i,j))<max_x_vec(end))
@@ -64,15 +101,13 @@ for j=1:(Tmax)
     end
 
     %cleaning a_hat
-    max_a_vec = maxk(mes_a(:,j),Nattack);
+    max_a_vec = maxk(abs(mes_a(:,j)),Nattack);
     for i=1:q
         if(abs(mes_a(i,j))<max_a_vec(end))
             mes_a(i,j)=0; 
         end
     end
 end
-
-room(mes_x,mes_a,1,Tmax);
-
+room(mes_x,mes_a,1,Tmax,support_x_true,support_a_true);
 
 

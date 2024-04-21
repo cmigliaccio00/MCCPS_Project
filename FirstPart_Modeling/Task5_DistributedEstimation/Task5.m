@@ -52,7 +52,7 @@ for m=1:4
     %-----------------PULIZIA DI X-----------------
     Ntarget=2; 
     x_clean=Z_next(1:n,1);
-    [max_x_vec,Supp_x] = maxk(x_clean,Ntarget);
+    [max_x_vec,Supp_x] = maxk(abs(x_clean),Ntarget);
     for i=1:n
         if(abs(x_clean(i))<max_x_vec(Ntarget))
             x_clean(i)=0; 
