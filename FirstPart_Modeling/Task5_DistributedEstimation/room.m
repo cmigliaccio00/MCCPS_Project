@@ -61,17 +61,16 @@ function room(x_supp,a_supp,k,name)
    
    %These values are given from the text of task5 as solutions 
    figure('Name',name)
-   sensors_under_attack=sensors([8,23]);
+   sensors_under_attack=sensors([8,23],:);
    target_real=[14,25];
 
    estimated_attack=zeros(size(a_supp,2),2);
    for i = 1:size(a_supp,2)
         estimated_attack(i,:) = sensors(a_supp(i),2:end);
    end
-     
    plot(sensors(:,2), sensors(:,3),'o','MarkerSize',10, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
    hold on
-   plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',11, 'MarkerEdgeColor',1/255*[255 0 0]);
+   plot(sensors_under_attack(:,2),sensors_under_attack(:,3),'o','MarkerSize',15, 'MarkerEdgeColor',1/255*[255 0 0]);
    plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
    text(sensors(:,2)-20,sensors(:,3)-30,numbers,'FontSize',8,'FontWeight','bold');
    plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',10, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220]);

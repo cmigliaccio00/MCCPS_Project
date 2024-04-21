@@ -61,7 +61,7 @@ function room(x_supp,a_supp,name,count)
    
    %These values are given from the text of task3 as solutions 
    figure('Name',name)
-   sensors_under_attack=sensors([12,16]);
+   sensors_under_attack=sensors([12,16],:);
    target_real=[23,36,87];
 
    if a_supp~=0
@@ -73,15 +73,20 @@ function room(x_supp,a_supp,name,count)
    
    plot(sensors(:,2), sensors(:,3),'o','MarkerSize',10, 'MarkerEdgeColor',1/255*[247 176 240],'MarkerFaceColor',1/255*[247 176 240]);
    hold on
-   plot(room_grid(1,sensors_under_attack), room_grid(2,sensors_under_attack),'o','MarkerSize',11, 'MarkerEdgeColor',1/255*[255 0 0]);
+   plot(sensors_under_attack(:,2),sensors_under_attack(:,3),'o','MarkerSize',15, 'MarkerEdgeColor',1/255*[255 0 0]);
    if a_supp~=0
     plot(estimated_attack(:,1), estimated_attack(:,2),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[255 0 0]);
    end
    text(sensors(:,2)-20,sensors(:,3)-30,numbers,'FontSize',8,'FontWeight','bold');
    plot(room_grid(1,target_real), room_grid(2,target_real),'square','MarkerSize',10, 'MarkerEdgeColor',1/255*[40 208 220],'MarkerFaceColor',1/255*[40 208 220]);
    plot(room_grid(1,x_supp), room_grid(2,x_supp),'*','MarkerSize',10, 'MarkerEdgeColor',1/255*[28 55 189]);
-   grid on,        
-   legend('Sensors','Sensors under attack','Estimated attacks','Targets','Estimated targets','Location','eastoutside')
+   grid on,  
+   if name=="ISTA"
+       legend('Sensors','Sensors under attack','Estimated attacks','Targets','Estimated targets','Location','eastoutside')
+   else
+       legend('Sensors','Sensors under attack','Targets','Estimated targets','Location','eastoutside')
+   end
+
    xticks(100:100:1000)
    yticks(100:100:1000)
    xlabel('(cm)')

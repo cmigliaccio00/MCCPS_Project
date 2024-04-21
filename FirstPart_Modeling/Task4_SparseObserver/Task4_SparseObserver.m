@@ -16,7 +16,33 @@ q=25;           %number of sensors
 Ntarget=3;
 Nattack=2;
 
-aware=1; % 0=unaware attack  1=aware attack
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         OPTION START                                  %%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 0=unaware attack  1=aware attack
+aware=1; 
+
+%To use the change_sensor option the aware must bet set to 1
+
+% 0=the sensors under attack are always the same for 50 time istants
+% 1=the sensors under attack change every 25 seconds
+change_sensors=1; 
+
+if change_sensors==1 && aware==0
+    return
+end
+
+Tmax=100; %It must be a multiple of 25 and the aware option must be set to 1
+
+if mod(Tmax,25)~=0
+    return
+elseif ~aware && Tmax~=50
+    return
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                         OPTION END                                    %%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 lammba1=10; lambda2=20; 
 lambda=[10*ones(p,1); 20*ones(q,1)];
@@ -26,7 +52,7 @@ G=normalize(G);
 tau= (norm(G)^(-2))-eps;                    %step size
 
 %------------------------SPARSE OBSERVER------------------------
-Tmax=50;
+
 
 %z_hat = [xtrue; zeros(q,1)];       %stato iniziale 
 
@@ -44,14 +70,34 @@ if aware
     xtrue(support_x_true) = 1;
 
     %generate attack support
-    support_a_true = randperm(q);
-    support_a_true = support_a_true(1:Nattack); % I consider 2 sensors under attack
+    tmp_supp_a = randperm(q);
+    tmp_supp_a = tmp_supp_a(1:Nattack); % I consider 2 sensors under attack
     %atrue(support_a_true) = 0; %->da eliminare
-    noise=0;
-    for i=1:Tmax
-        Y(:,i) = D*xtrue + atrue + noise;
-        atrue(support_a_true)=0.5*Y(support_a_true,i);
-        xtrue=A*xtrue;
+    noise=0;%->TODO: cambaire con un valore di rumore accettabile
+    
+    if change_sensors
+        rep=Tmax/25;
+        support_a_true=zeros(rep,Nattack);
+        for i=1:rep        
+            for j=((i-1)*25)+1:25*i
+                Y(:,j) = D*xtrue + atrue + noise;
+                atrue(tmp_supp_a)=0.5*Y(tmp_supp_a,j);
+                xtrue=A*xtrue;
+                %sup_a=[sup_a atrue];
+            end
+            %generate a new attack support
+            atrue=zeros(q,1);
+            support_a_true(i,:)=tmp_supp_a;
+            tmp_supp_a = randperm(q);
+            tmp_supp_a = tmp_supp_a(1:Nattack); % I consider 2 sensors under attack
+            
+        end
+    else
+        for i=1:Tmax
+            Y(:,i) = D*xtrue + atrue + noise;
+            atrue(support_a_true)=0.5*Y(support_a_true,i);
+            xtrue=A*xtrue;
+        end
     end
 else
     %The definition of initial condition on x_true and a_true are given only for graphical
@@ -59,7 +105,7 @@ else
     %target and also we have to estimate which are the sensors under
     %attack
     x_true = zeros(p,1);
-    support_x_true = [87,23,36];    
+    support_x_true = [86,22,35];    
     
     a_true = zeros(q,1);
     support_a_true = [12,16];
@@ -69,9 +115,9 @@ end
 
 
 z_hat_plus=zeros(p+q,1);
-for k=0:(Tmax-1)
+for k=1:Tmax
     %to do...
-    arg=z_hat + tau*G'*(Y(:,k+1)-G*z_hat);                  %arg of STO
+    arg=z_hat + tau*G'*(Y(:,k)-G*z_hat);                  %arg of STO
     %to do... Estimation (apply STO for each arg(i))
     for i=1:(p+q)
         z_hat_plus(i) = sto(arg(i), tau*lambda(i));        
@@ -108,6 +154,6 @@ for j=1:Tmax
         end
     end
 end
-room(mes_x,mes_a,1,Tmax,support_x_true,support_a_true);
+room(mes_x,mes_a,1,Tmax,support_x_true,support_a_true,change_sensors);
 
 
