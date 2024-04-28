@@ -1,5 +1,6 @@
 # MCCPS_Project
-> Project activity. Course of "Modeling and  Control  of CPSs"
+### **Project activity repository**.
+> Course of "Modeling and  Control  of CPSs"
 
 
 ## *Gruppo*
