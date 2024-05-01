@@ -64,7 +64,7 @@ function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sen
                 row=row+1;
             end
         else
-            sensors_under_attack = sensors(support_a(1,:));
+            sensors_under_attack = support_a(1,:);
         end        
         sensors_under_attack=sensors(sensors_under_attack,:);
         support_attack = find(a_estimated(:,move));      
