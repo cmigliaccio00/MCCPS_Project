@@ -111,7 +111,7 @@ function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sen
         axis square
         str = sprintf(' Time = %d', move);
         text(1100,900,str);
-        pause(0.5)
+        pause(0.3)
         hold off
     end
 
