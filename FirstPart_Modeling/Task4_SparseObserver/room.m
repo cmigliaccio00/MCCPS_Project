@@ -1,4 +1,4 @@
-function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sensor)
+function [x_correct_estimate,a_correct_estimate,total_estimate] = room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sensor)
     load tracking_moving_targets.mat;
   
     n=size(x_estimated,1);
@@ -6,6 +6,9 @@ function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sen
     H = 10; %height of the grid (# cells)
     L = 10; %length of the grid (# cells)
     W = 100; %width of a square cell (cm)
+    x_correct_estimate = zeros(Tmax,1);
+    a_correct_estimate = zeros(Tmax,1);
+    total_estimate = zeros(Tmax,1);
 
     room_grid = zeros(2,n);
     for i=1:n
@@ -53,6 +56,7 @@ function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sen
     
     x_true=zeros(n,1);
     x_true(support_x) = 1;
+    x_true=A*x_true;
     row=1;
     for move = Tstart:Tmax
         x_true=A*x_true;
@@ -111,8 +115,26 @@ function room(x_estimated,a_estimated,Tstart,Tmax,support_x,support_a,change_sen
         axis square
         str = sprintf(' Time = %d', move);
         text(1100,900,str);
-        pause(0.5)
+        pause(0.1)
         hold off
+    
+    %Computing the number of correct prediction 
+    if isequal(sort(support_a)',sort(support_attack));
+        a_correct_estimate(move) = 1;
+    else
+        a_correct_estimate(move) = 0;
+    end
+    if isequal(sort(target_real),sort(target_estimated))
+        x_correct_estimate(move) = 1;
+    else
+        x_correct_estimate(move) = 0;
     end
 
+    if x_correct_estimate(move) && a_correct_estimate(move)
+        total_estimate(move) = 1;
+    else
+        total_estimate(move) = 0;
+    end
+
+    end
 end
