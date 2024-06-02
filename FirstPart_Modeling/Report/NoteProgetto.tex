@@ -1,0 +1,118 @@
+\noindent
+\textbf{Deadline}
+    {\color{red}Entro il 28/06/2024}\\
+\noindent
+\textbf{Numero di pagine(max)}  4-5 pagine
+
+\section*{Task \#1: IST Algorithm (Carlo)}
+\subsection*{Introduzione}
+\begin{itemize}
+    \itemsep0em
+    \item Breve introduzione su ottimizzazione sparsa
+    \item $\ell_0$ e sua approssimazione $\ell_1$ 
+\end{itemize}
+\subsection*{Algoritmo}
+\begin{itemize}
+    \itemsep0em
+    \item Shrinkage/Thresholding operator
+    \item ISTA e cenni sulla sua derivazione
+\end{itemize}
+\subsection*{Risultati}
+\begin{itemize}
+    \item Grafico Tasso di successo vs numero di sensori $q$; (potrebbe essere un'idea: slider su LiveScript \#sensori)
+    \item Tabella con Valore di $\tau$, Tempi di convergenza, valore di $\lambda$, Tasso di successo (evidenziando min, mean, max);
+    \item slider per valori di $\tau$ (influisce sul tempo di convergenza) e $\lambda$ (influisce sulla sparsità della soluzione trovata, supporto);
+    \item Commento su: 
+    \begin{enumerate}
+        \item Il risultato che ottengo \`e lo stesso? (NO $\to$ bias, errore)
+        \item Il supporto lo riesco sempre a recuperare?
+    \end{enumerate}
+\end{itemize}
+
+\section*{Task \#2: Localization under sparse sensor attacks (Lorenzo)}
+\subsection*{Introduzione}
+\begin{itemize}
+    \item LASSO, sparse optimization e CPSs
+    \item Perch\'e uso l'ottimizzazione sparsa per la SSE di CPSs?
+    \item Qualche commento sul setting centralizzato e sull'utilizzo del Fusion Center (ricordare: non ci sono attacchi al fusion center...)
+\end{itemize}
+\subsection*{Algoritmo}
+\begin{itemize}
+    \item Hyperparameters utilizzati
+    \item Estensione del problema del LASSO (pesi $\lambda$ differenti)
+    \item Algoritmo ISTA per la risoluzione del LASSO
+\end{itemize}
+\subsection*{Risultati}
+\begin{itemize}
+    \item Confronto AWARE vs UNAWARE su:
+    \begin{itemize}
+        \item Tasso di rilevamento attacchi
+        \item Accuratezza della stima
+    \end{itemize}
+\end{itemize}
+
+\section*{Task \#3: Localization under sparse sensor attacks (Lorenzo)}
+\subsection*{Introduzione}
+\begin{itemize}
+    \item Indoor localization e RSS fingerprinting
+    \item Perch\'e usiamo la sparsit\`a? Cell-grid discretization...
+\end{itemize}
+\subsection*{Algoritmo}
+\begin{itemize}
+    \item Hyperparameters utilizzati
+    \item Weighted LASSO: $\lambda_1, \lambda_2$ per la soluzione
+    \item K-NN: Svantaggi etc...
+\end{itemize}
+\subsection*{Risultati}
+\begin{itemize}
+    \item Grafico room con sensori e target nei due casi AWARE e UNAWARE \textsf{(idea: sul Live Script si potrebbe mettere il Menu a tendina per scegliere AWARE/UNAWARE)}
+\end{itemize}
+
+\section*{Task \#4: Dynamic SSE (Federico)}
+\subsection*{Introduzione}
+\begin{itemize}
+    \item Breve descrizione del setting dinamico
+\end{itemize}
+\subsection*{Algoritmo}
+\begin{itemize}
+    \item Hyperparameters utilizzati
+    \item Qualche parola su Online Gradient Descent
+    \item Qualche parola su Sparse Observer 
+    \item In riferimento agli iperparametri utilizzati mostrare che gli autovalori della matrice $A-L_gC$ siano adeguati (stima asintotica dello stato)
+\end{itemize}
+\subsection*{Risultati}
+\begin{itemize}
+    \item Caso base: Snapshot della stanza in momenti particolari (es: stima completamente errata, stima parzialmente corretta, tracking OK...) \textsf{
+        (idea: uso del comando \texttt{subplot()} su MATLAB)
+    }
+    \item (Optional 1) Aware time-variyng attacks: dopo quanto tempo ho convergenza?
+    \item (Optional 2) Sensori sotto attacco che cambiano: dopo quanto tempo riesco ad agganciare di nuovo tutto correttamente?
+    \item (Optional 3) Qual \`e il limite al numero di sensori? (...qui c'\`e quel problema da risolvere di stima corretta nonostante ci siano tutti e 25 i sensori sotto attacco)
+    \item Tabella per confrontare Caso baso e Task opzionali 1 e 2 in termini di: (i) converge/non converge, (ii) Tempo di convergenza (dopo quante iterazioni converge)?
+    \item \textsf{idee per Live Script: (i) Scelta aware/unaware, change sensors con checkbox, (ii) Slider con range (min-max) per sensori sotto attacco, numero di target, $T_{max}$...}
+\end{itemize}
+
+\section*{Task \#5: Distributed SSE (Carlo)}
+\subsection*{Introduzione}
+\begin{itemize}
+    \item Rimozione fusion center
+    \item Vantaggi setting centralizzato e setting distribuito
+    \item Consensus
+\end{itemize}
+
+\subsection*{Algoritmo}
+\begin{itemize}
+    \item Distributed ISTA: minimizzazione distribuita del funzionale del LASSO (regularization)
+\end{itemize}
+\subsection*{Risultati}
+\begin{itemize}
+    \item Per ogni topologia $Q$
+    \begin{enumerate}
+        \item Autovalori di Q (rispettano il teorema di Perron/Frobenius)
+        \item Consensus si/no
+        \item Tempo di convergenza e analisi di esr(Q) per ogni tipologia
+        \item Tabella con le informazioni precedenti
+        \item Grafico che rappresenti la topologia del grafo (Ricorda: prendi $Q^T$ per usare il comando \texttt{digraph()})
+    \end{enumerate}
+    \item \textsf{idee per LiveScript: Menu a Tendina per il cambio della topologia...}
+\end{itemize}
