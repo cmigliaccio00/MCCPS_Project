@@ -115,11 +115,14 @@ function [x_correct_estimate,a_correct_estimate,total_estimate] = room(x_estimat
         axis square
         str = sprintf(' Time = %d', move);
         text(1100,900,str);
-        pause(0.1)
+        %pause(0.1)
         hold off
-    
-    %Computing the number of correct prediction 
-    if isequal(sort(support_a)',sort(support_attack));
+
+    %Computing the number of correct prediction   
+    if move == Tmax && change_sensor
+        row = row-1;
+    end
+    if isequal(sort(support_a(row,:))',sort(support_attack));
         a_correct_estimate(move) = 1;
     else
         a_correct_estimate(move) = 0;
