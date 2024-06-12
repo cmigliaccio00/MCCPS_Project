@@ -44,55 +44,18 @@
         \textit{Federico PRETINI} (329152)}
     
     \date{}
+
     \clearpage\maketitle
     \thispagestyle{empty}
     \vspace{-2em}
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    \input{NoteProgetto.tex}
-=======
-
-    \section*{Task \#1: IST Algorithm}
     
-
-    \section*{Task \#2: Secure State Estimation of CPSs}
-
-    \section*{Task \#3: Localization under sparse sensor attacks}
-    \newpage
-    \section*{Task \#4: Dynamic SSE}
-    \subsection*{Introduction}
-    In the previous task we performed SSE on a static system, now we leave out the static hypothesis and move on to the dynamic one.
-    Recalling the fact that a CPS with some sensors under attack can be described by means of system (1), in the dynamic case the matrix A is no longer the identity matrix but will become more complex.
-    \subsection*{Algorithms}
-    In order to solve this problem we could think of using least square or Gradient Descent (\textbf{GD}) algorithms but in the former case it might be computationally complex to invert the C-matrix, while in the latter case the algorithm would be too slow to be applied to a dynamic case.
-    In order to speed up the GD we can run a single gradient descent step at each k instant, this algorithm has been called Online Gradient Descent or \textbf{OGD} 
-
-    $$\hat{x}(k+1) = A\hat{x}(k) - \tau AC^T[C\hat{x}(k) - y(k)]$$
-
-    Now we can add the attack on the formulation and obtained the so called \textb{augmented observability matrix} $O_t$. From the theory we know that if the matrix A as an eigenvalues equal to 1 the dynamic of the CPS also with constant attack is not observable.
-    But thanks to the information about the sparsity of the attack we can develop a SPARSE OBSERVER in order to be able to solve the following problem \\
-    \\min....
-    \\after a sufficient small number of step T.
-    \\The algorithm of the sparse observer is the following:
-    
-    
-    
-    
-    
-    \subsection*{Results}
-
-    \section*{Task \#5: Distributed SSE}
->>>>>>> Stashed changes
-=======
     \input{Task1.tex}       % Carlo Migliaccio
->>>>>>> Stashed changes
 
     %\input{Task2.tex}       % Lorenzo Aghilar
 
     %\input{Task3.tex}       % Lorenzo Aghilar
 
-    %\input{Task4.tex}       % Federico Pretini
+    \input{Task4.tex}       % Federico Pretini
 
     \input{Task5.tex}       % Carlo Migliaccio    
 \end{document}

@@ -1,14 +1,9 @@
 # Fdb version 4
-<<<<<<< Updated upstream
-["pdflatex"] 1718177533.45079 "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" "report.pdf" "report" 1718177535.17853 2
-  "NoteProgetto.tex" 1717348750 5214 a540e65b48f8a5ba648dad5d8c4a79ea ""
-  "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" 1718177530 3114 7aaaef91f43099c55790a164c13858a1 ""
-=======
-["pdflatex"] 1718177488.96492 "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" "report.pdf" "report" 1718177490.99264 0
-  "Task1.tex" 1718131737 7813 e606735d8ccffd81848a299764eae6b1 ""
-  "Task5.tex" 1718177488 7926 c4f766cc1af8591a4de4f8a3519e9c45 ""
-  "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" 1718134381 1637 d996285669ae3aaa03df3b925ce0a1a8 ""
->>>>>>> Stashed changes
+["pdflatex"] 1718178279.0431 "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" "report.pdf" "report" 1718178281.50571 0
+  "Task1.tex" 1718177787 7813 e606735d8ccffd81848a299764eae6b1 ""
+  "Task4.tex" 1718178237 1547 0a2ab204f6115a4ebc7e7ad2307b29cb ""
+  "Task5.tex" 1718177787 7926 c4f766cc1af8591a4de4f8a3519e9c45 ""
+  "c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex" 1718178275 1642 0cbb471b18549ce579bbb6c0e36b217a ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1709974823 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1709976195 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1709975608 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -66,14 +61,10 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1709973702 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1709973702 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1709973702 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
-<<<<<<< Updated upstream
-  "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1709973702 35752 024fb6c41858982481f6968b5fc26508 ""
-=======
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb" 1709973702 36094 798f80770b3b148ceedd006d487db67c ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb" 1709973702 36912 b448ef9ad9d7228ec3c6e71005136d55 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1709973702 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1709973702 32734 69e00a6b65cedb993666e42eedb3d48f ""
->>>>>>> Stashed changes
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1709973702 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1709973702 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1709973702 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
@@ -242,21 +233,16 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709981979 5513072 c253eaa6343e824d2661325481d57b70 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709982122 8221404 96a78d3294408dad61821d0b84b8bd19 ""
   "c:/texlive/2023/texmf.cnf" 1709981959 713 e69b156964470283e0530f5060668171 ""
-<<<<<<< Updated upstream
-  "report.aux" 1718177535 101 a728a4caf1d1063d84eafae1ead4ceb0 "pdflatex"
-  "report.tex" 1718177530 3114 7aaaef91f43099c55790a164c13858a1 ""
-=======
-  "img/Conv_lambda.png" 1717692121 27856 4d84829c50b25f054667804fefe3a940 ""
-  "img/Q12.png" 1718124221 71861 1b06e3bc6f64b7c15b8bdb3b62456c74 ""
-  "img/Q18.png" 1718124234 77258 c0cf0f3a0a04fe1b1220147fd727ef1a ""
-  "img/Q4.png" 1718124176 40883 43c9fc67d5d8ff993dd0c825aaf8df46 ""
-  "img/Q8.png" 1718124205 59659 b1da5288cfaa3d81a2d6085f1cdc8657 ""
-  "img/Room.png" 1718135149 30180 215a4a6b872aad8d5d1b5f24ec4f2efc ""
-  "img/SuppRecRate.png" 1717692010 29747 c8bfbe11f6702da799ef42620e2a69a6 ""
-  "img/conv_tau.png" 1717692226 21892 f0c7e2f4dd573adb8ee9bbb0bf9d9605 ""
-  "report.aux" 1718177490 2372 cdd7bbaf0c417a7ed5262243967e7c73 "pdflatex"
-  "report.tex" 1718134381 1637 d996285669ae3aaa03df3b925ce0a1a8 ""
->>>>>>> Stashed changes
+  "img/Conv_lambda.png" 1718177787 27856 4d84829c50b25f054667804fefe3a940 ""
+  "img/Q12.png" 1718177787 71861 1b06e3bc6f64b7c15b8bdb3b62456c74 ""
+  "img/Q18.png" 1718177787 77258 c0cf0f3a0a04fe1b1220147fd727ef1a ""
+  "img/Q4.png" 1718177787 40883 43c9fc67d5d8ff993dd0c825aaf8df46 ""
+  "img/Q8.png" 1718177787 59659 b1da5288cfaa3d81a2d6085f1cdc8657 ""
+  "img/Room.png" 1718177787 30180 215a4a6b872aad8d5d1b5f24ec4f2efc ""
+  "img/SuppRecRate.png" 1718177787 29747 c8bfbe11f6702da799ef42620e2a69a6 ""
+  "img/conv_tau.png" 1718177787 21892 f0c7e2f4dd573adb8ee9bbb0bf9d9605 ""
+  "report.aux" 1718178281 2372 4be9eaa22990f661b2de17c7e8748426 "pdflatex"
+  "report.tex" 1718178275 1642 0cbb471b18549ce579bbb6c0e36b217a ""
   (generated)
   "report.aux"
   "report.log"

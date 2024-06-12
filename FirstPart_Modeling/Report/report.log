@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  12 JUN 2024 09:32
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  12 JUN 2024 09:31
->>>>>>> Stashed changes
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.9)  12 JUN 2024 09:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -686,11 +682,11 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
 (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./Task1.tex
@@ -770,23 +766,28 @@ Overfull \hbox (1.79305pt too wide) in paragraph at lines 76--77
 []\T1/cmr/m/n/10.95 2.0011| 
  []
 
-) (./Task5.tex [2 <./img/SuppRecRate.png (PNG copy)> <./img/Conv_lambda.png (PNG copy)> <./img/conv_tau.png (PNG copy)>]
-<img/Q4.png, id=35, 184.2885pt x 150.5625pt>
+) (./Task4.tex [2 <./img/SuppRecRate.png (PNG copy)> <./img/Conv_lambda.png (PNG copy)> <./img/conv_tau.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 11--16
+
+ []
+
+) (./Task5.tex [3]
+<img/Q4.png, id=38, 184.2885pt x 150.5625pt>
 File: img/Q4.png Graphic file (type png)
 <use img/Q4.png>
 Package pdftex.def Info: img/Q4.png  used on input line 51.
 (pdftex.def)             Requested size: 123.47264pt x 100.87634pt.
-<img/Q8.png, id=37, 178.86826pt x 151.16475pt>
+<img/Q8.png, id=40, 178.86826pt x 151.16475pt>
 File: img/Q8.png Graphic file (type png)
 <use img/Q8.png>
 Package pdftex.def Info: img/Q8.png  used on input line 53.
 (pdftex.def)             Requested size: 119.8411pt x 101.27985pt.
-<img/Q12.png, id=38, 182.48175pt x 146.34676pt>
+<img/Q12.png, id=41, 182.48175pt x 146.34676pt>
 File: img/Q12.png Graphic file (type png)
 <use img/Q12.png>
 Package pdftex.def Info: img/Q12.png  used on input line 55.
 (pdftex.def)             Requested size: 122.26213pt x 98.0518pt.
-<img/Q18.png, id=39, 175.857pt x 148.75575pt>
+<img/Q18.png, id=42, 175.857pt x 148.75575pt>
 File: img/Q18.png Graphic file (type png)
 <use img/Q18.png>
 Package pdftex.def Info: img/Q18.png  used on input line 57.
@@ -798,24 +799,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 65.
 (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-<<<<<<< Updated upstream
-) [2]) [3]
-c:/Users/carlo/MATLAB/Projects/ProjectMCCPS/FirstPart_Modeling/Report/report.tex:67: Undefined control sequence.
-l.67 ...mulation and obtained the so called \textb
-                                                  {augmented observability m...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--72
-
- []
-
-[4] (./report.aux)
-=======
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 65.
@@ -823,41 +806,31 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3]
-<img/Room.png, id=43, 331.2375pt x 317.38576pt>
+[4]
+<img/Room.png, id=46, 331.2375pt x 317.38576pt>
 File: img/Room.png Graphic file (type png)
 <use img/Room.png>
 Package pdftex.def Info: img/Room.png  used on input line 100.
 (pdftex.def)             Requested size: 161.32884pt x 154.58086pt.
-) [4 <./img/Q4.png> <./img/Q8.png> <./img/Q12.png> <./img/Q18.png> <./img/Room.png>] (./report.aux)
->>>>>>> Stashed changes
+) [5 <./img/Q4.png> <./img/Q8.png> <./img/Q12.png> <./img/Q18.png> <./img/Room.png>] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 20771 strings out of 474116
- 390163 string characters out of 5747718
+ 20777 strings out of 474116
+ 390240 string characters out of 5747718
  1943190 words of memory out of 5000000
- 42671 multiletter control sequences out of 15000+600000
+ 42674 multiletter control sequences out of 15000+600000
  584294 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
-<<<<<<< Updated upstream
- 94i,6n,93p,2424b,249s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (4 pages, 214915 bytes).
-PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
-=======
  95i,17n,93p,2424b,387s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (4 pages, 622343 bytes).
+Output written on report.pdf (5 pages, 625414 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
->>>>>>> Stashed changes
+ 163 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
