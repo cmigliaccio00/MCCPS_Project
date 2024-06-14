@@ -1,6 +1,3 @@
-%materiale vecchio: ho spostato qui per sicurezza nel caso ci fosse qualcosa di utile da recuperare
-%                   Carlo
-
 \section*{Task \#4: Dynamic SSE}
     \subsection*{Introduction}
     In the previous task we performed SSE on a static system, now we leave out the static hypothesis and move into the dynamic one.
@@ -28,11 +25,16 @@
     The convergence of the attack $a$ and state $x$ are understood as a match between the support of the actual vector and the estimated vector. For the observer insted the convergence time is understood as intersection between the convergence of the two previous vector.
     \subsubsection*{Main task: unaware attack}
     Using $\Lambda = [10,...10,20..20]$, a time simulation of 50 and matrices $A,D,Y$ provided by the file $tracking\_moving\_targets.mat$ we obtain that in general the sparse observer converge in 34 time instants and in particular the positions of the targets are correctly estimated only after 23 time istants.
-    \begin{figure}[h]
-    \centering
-    \subfloat[Convergence]{\includegraphics[width=.40\linewidth]{img/unaware_2.png}}
-    \subfloat[Room]{\includegraphics[width=.40\linewidth]{img/unaware_1.png}}
-    \caption{Unawere: Three targets and two sensors under attack}
+    
+    \begin{figure}[!ht]   
+        \vspace{-1cm}
+        \centering 
+        \subfigure[Convergence]
+        {\includegraphics[scale=0.3]{img/unaware_2.png}}
+        \subfigure[Room]
+        {\includegraphics[scale=0.3]{img/unaware_1.png}}
+        \caption{Unawere: Three targets and two sensors under attack}
+        \label{fig:unaware_1}
     \end{figure}
     
     \noindent
@@ -42,11 +44,15 @@
     \newpage
     \subsubsection*{1\# optional task: aware time-varying attack}
     For this first optional task, the A and D matrices are always the same while the Y matrix was computed starting from randomly generated initial conditions. At each time instant $k$ an attack equal to half the previous value of the output is injected on the actual output ($a(k)= \frac{1}{2}y(k-1) \forall k=1..50$). 
-      \begin{figure}[h]
-    \centering
-    \subfloat[Convergence]{\includegraphics[width=.40\linewidth]{img/aware_2a_3x_2.png}}
-    \subfloat[Room]{\includegraphics[width=.40\linewidth]{img/aware_2a_3x_1.png}}
-    \caption{Aware: Three targets and two sensors under attack}
+    \begin{figure}[h]   
+        \vspace{-1cm}
+        \centering 
+        \subfigure[Convergence]
+        {\includegraphics[scale=0.3]{img/aware_2a_3x_2.png}}
+        \subfigure[Room]
+        {\includegraphics[scale=0.3]{img/aware_2a_3x_1.png}}
+        \caption{Aware: Three targets and two sensors under attack}
+        \label{fig:aware_2}
     \end{figure}
     
 \noindent
@@ -72,17 +78,22 @@ As can be seen, in general, the sensors under attack are always correctly identi
 \hline
 \end{tabular}
 \caption{Summary table showing some statistics on $a$ and $x$}
-\label{table:1}
+\label{table:4}
 \end{table}
             
     \subsubsection*{2\# changing sensors under attack}
 For the second task, an additional complication was introduced by changing the sensors under attack every 25 instant of time. In the graph shown in the figure, it can be seen that, in general, this change of sensors under attack causes problems in tracking the targets, temporarily shifting the state prediction from correct to incorrect. In most cases, by the end of the 50 instants of time, the state is still correctly recovered.
-    \begin{figure}[h]
-    \centering
-    \subfloat[Convergence]{\includegraphics[width=.40\linewidth]{img/aware_2a_3x_cs_2.png}}
-    \subfloat[Room]{\includegraphics[width=.40\linewidth]{img/aware_2a_3x_cs_1.png}}
+\begin{figure}[h]   
+    \vspace{-1cm}
+    \centering 
+    \subfigure[Convergence]
+    {\includegraphics[scale=0.3]{img/aware_2a_3x_cs_2.png}}
+    \subfigure[Room]
+    {\includegraphics[scale=0.3]{img/aware_2a_3x_cs_1.png}}
     \caption{Aware: Three targets and two sensors under attack}
-    \end{figure}
+    \label{fig:aware_3}
+\end{figure}
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -103,17 +114,22 @@ For the second task, an additional complication was introduced by changing the s
 \hline
 \end{tabular}
 \caption{Summary table showing some statistics on $a$ and $x$}
-\label{table:2}
+\label{table:5}
 \end{table}
     
     \subsubsection*{3\# optional task: Maximum number of sensors under attack}
     To determine the maximum number of sensors under attack, a convergence threshold of at least 50 percent was cosidered for both state x and attack a for both 100 simulation in a time period of 100. A maximum number of sensors under attack was found to be 7 with 5 targets to be tracked.
-    \begin{figure}
-    \centering
-    \subfloat[Convergence]{\includegraphics[width=.40\linewidth]{img/aware_7a_5x_2.png}}
-    \subfloat[Room]{\includegraphics[width=.40\linewidth]{img/aware_7a_5x_1.png}}
-    \caption{Aware: Five targets and seven sensors under attack}
+    \begin{figure}[h]   
+        \vspace{-1cm}
+        \centering 
+        \subfigure[Convergence]
+        {\includegraphics[scale=0.3]{img/aware_7a_5x_2.png}}
+        \subfigure[Room]
+        {\includegraphics[scale=0.3]{img/aware_7a_5x_1.png}}
+        \caption{Aware: Five targets and seven sensors under attack}
+        \label{fig:aware_4}
     \end{figure}
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -126,7 +142,7 @@ For the second task, an additional complication was introduced by changing the s
 \hline
 \textbf{Mean time of convergene} &41.76 &71.64 \\
 \hline
-\textbf{Minimum time of convergence} 6 &27  \\
+\textbf{Minimum time of convergence} &6 &27  \\
 \hline
 \textbf{Maximum time of convergence} &100 &99 \\
 \hline
@@ -134,7 +150,7 @@ For the second task, an additional complication was introduced by changing the s
 \hline
 \end{tabular}
 \caption{Summary table showing some statistics on $a$ and $x$}
-\label{table:3}
+\label{table:6}
 \end{table}
 
 
